@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path("", TemplateView.as_view(template_name="pcf/index.html")),
     path('admin/', admin.site.urls),
     path("unicorn/", include("django_unicorn.urls")),
-    path("", TemplateView.as_view(template_name="pcf/index.html"))
 ]

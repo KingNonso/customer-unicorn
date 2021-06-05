@@ -1,0 +1,83 @@
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+
+
+
+
+    <form unicorn:submit.prevent="save" class="was-validated">
+        <div class="form-group">
+            <label for="customer.name">Name:</label>
+            <input type="text" class="form-control" id="customer.name"
+                   unicorn:model.defer="name"
+                   unicorn:keyup.escape="name=''"
+                   placeholder="Enter customer name" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+            <span class="error">{{ unicorn.errors.name.0.message }}</span>
+        </div>
+        <div class="form-group">
+            <label for="customer.email">Email:</label>
+            <input type="email" class="form-control" id="customer.email"
+                   unicorn:model.defer="email"
+                   unicorn:keyup.escape="email=''"
+                   placeholder="Enter customer email" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+             <span class="error">{{ unicorn.errors.email.0.message }}</span>
+       </div>
+        <div class="form-group">
+            <label class="form-select">
+                <select class="custom-select"
+                        id="customer.subscription"
+                        unicorn:model.defer="subscription"
+                        id="customer.subscription"
+                required>
+                <option value="">Choose</option>
+                    {% for sub_type in subscriptions %}
+                        <option value="{{ sub_type }}">{{ sub_type }}</option>
+                    {% endfor %}
+                </select>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please select an option to continue.</div>
+                <span class="error">{{ unicorn.errors.subscription.0.message }}</span>
+         </label>
+        </div>
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
+    <br>
+    <br>
+    <br>
+
+    <h2>Customers' List </h2>
+
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subscription</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if customers %}
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.subscription }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            No customers 🎉
+        {% endif %}
+        </tbody>
+    </table>
+</div>
