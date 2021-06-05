@@ -6,7 +6,10 @@ A simple CRUD app of customer data using Django Unicorn
 
 Please follow the following instructions to setup this project:
 
-Clone the repo at `git clone https://github.com/KingNonso/customer-unicorn.git`
+Clone the repo 
+```
+git clone https://github.com/KingNonso/customer-unicorn.git
+```
 
 ## Setup/ Installation
 
