@@ -29,7 +29,7 @@ python manage.py collectstatic
 python manage.py runserver  # runs server at 127.0.0.1:8000 
 ```
 
-Django admin server should now be accessible via [127.0.0.1/admin](http://127.0.0.1/admin)
+Django admin server should now be accessible via [127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
 ### Project (Python/Django) + Unicorn
 
